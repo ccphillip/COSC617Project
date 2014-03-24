@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-COSC617Project::Application.load_tasks
+ProjectDemo::Application.load_tasks

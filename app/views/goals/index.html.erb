@@ -1,0 +1,52 @@
+<h1>Goals</h1>
+<!-->
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Date</th>
+    <th>Status</th>
+    <th>Priority</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @goals.each do |goal| %>
+  <tr>
+    <td><%= goal.name %></td>
+    <td><%= goal.description %></td>
+    <td><%= goal.date %></td>
+    <td><%= goal.status %></td>
+    <td><%= goal.priority %></td>
+    <td><%= link_to 'Show', goal %></td>
+    <td><%= link_to 'Edit', edit_goal_path(goal) %></td>
+    <td><%= link_to 'Destroy', goal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+-->
+
+<table>
+	<% @goals.each do |goal|%>
+	<tr>
+		<td class = "list_description">
+			<dl>
+				<dt><%= goal.name%></dt>
+				<dd><%= goal.description%></dd>
+				<p><ss>Deadline: </ss><%= goal.date%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<ss>Status: </ss><%= goal.status%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<ss>Priority: </ss><%= goal.priority%></p>
+			</dl>
+		</td>
+		<td class = "list_actions">
+			<%= link_to 'Show', goal %><br/>
+			<%= link_to 'Edit', edit_goal_path(goal) %><br/>
+			<%= link_to 'Destroy', goal, method: :delete, data: { confirm: 'Are you sure?' } %>
+		</td>
+	</tr>
+	<%end%>
+</table>
+<%= link_to 'New Goal', new_goal_path %>

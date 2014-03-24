@@ -1,0 +1,56 @@
+// Place all the styles related to the Goals controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.goals
+{
+  table 
+  {
+    border-collapse: collapse;
+  }
+  
+  table tr td
+  {
+    padding: 5px;
+    vertical-align: top;
+  }
+  
+  .list_description
+  {
+    width: 100%;
+  }
+  
+  dl
+  {
+    margin: 0;
+  }
+  
+  dt
+  {
+    color: #6600cc;
+    font-weight: bold;
+    font-size: larger;
+  }
+  
+  dd 
+  {
+    margin: 0;
+  }
+  
+  .list-actions
+  {
+    font-size: x-small;
+    text-align: right;
+    padding-left: 1em;
+  }
+  
+  p
+  {
+    color: #000000;
+  }
+  
+  ss
+  {
+    font-weight:bold;
+  }
+}
