@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140323142306) do
+ActiveRecord::Schema.define(:version => 20140324014838) do
 
   create_table "articles", :force => true do |t|
     t.string   "content"
@@ -32,6 +32,16 @@ ActiveRecord::Schema.define(:version => 20140323142306) do
     t.datetime "updated_at",  :null => false
   end
 
+  create_table "profile", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "website"
+    t.string   "about_me"
+    t.string   "location"
+    t.datetime "last_active"
+  end
+
+  add_index "profile", ["user_id"], :name => "index_profile_on_user_id"
+
   create_table "relationships", :force => true do |t|
     t.integer  "follower_id"
     t.integer  "followed_id"
@@ -46,11 +56,13 @@ ActiveRecord::Schema.define(:version => 20140323142306) do
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "email"
-    t.datetime "created_at",                         :null => false
-    t.datetime "updated_at",                         :null => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
     t.boolean  "admin",           :default => false
     t.string   "remember_token"
     t.string   "password_digest"
+    t.string   "profile_name",    :default => "user"
+    t.string   "profile_id",                          :null => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
