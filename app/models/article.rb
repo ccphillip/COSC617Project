@@ -1,6 +1,6 @@
 class Article < ActiveRecord::Base
   attr_accessible :content
-  
+  has_many :comments, dependent: :destroy
   belongs_to :user
   
   validates :content, :presence => true, :length => { :maximum => 5000}

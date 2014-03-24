@@ -1,0 +1,10 @@
+<div class="comment">
+   
+  <%= comment.body %><br>
+   
+  
+  <%= link_to 'Delete Comment', comment,
+    :confirm => 'Are you sure?',
+    :method => :delete if signed_in? %>
+    <hr />
+</div>

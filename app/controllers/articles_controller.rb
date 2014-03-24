@@ -17,7 +17,12 @@ class ArticlesController < ApplicationController
     @article.destroy
     redirect_to root_url
   end
-
+def comment
+     
+    @article=Article.find(params[:articleid]) 
+    @comment = Comment.new( :article => @article )
+    
+ end
   private
 
     def correct_user

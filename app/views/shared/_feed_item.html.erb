@@ -6,6 +6,7 @@
   <span class="content"><%= feed_item.content %></span>
   <span class="timestamp">
     Posted <%= time_ago_in_words(feed_item.created_at) %> ago.
+    <span class="comment"><%= link_to "Add Comment", :controller => 'articles',:action => 'comment', :articleid => feed_item.id  %></span>
   </span>
   <% if current_user?(feed_item.user) %>
     <%= link_to "delete", feed_item, method: :delete,
