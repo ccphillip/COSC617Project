@@ -1,12 +1,13 @@
 source 'https://rubygems.org'
 gem 'gravatar_image_tag'
 gem 'rails' 
-gem 'bootstrap-sass', '2.1'
+# gem 'bootstrap-sass', '3.1.1'
 gem 'bcrypt-ruby' 
 gem 'faker'  
 gem 'bootstrap-will_paginate' 
 gem 'jquery-rails' 
 gem 'twitter-bootstrap-rails'
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 

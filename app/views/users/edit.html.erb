@@ -1,10 +1,13 @@
-<h1>Edit user</h1>
+<h1>Edit User Profile</h1>
 
 <%= form_for(@user) do |f| %>
   <%= render 'shared/error_messages', :object => f.object %>
   <%= render 'fields', :f => f %>
   <div class="actions">
-    <%= f.submit "Update" %>
+    <!-- <%= f.submit "Update" %> -->
+    <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+    <i class="icon-ok icon-white"></i> Submit </i>
+    <% end %>
   </div>
 <% end %>
 

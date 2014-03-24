@@ -13,12 +13,46 @@
   </aside>
   <div class="span8">
     <%= render 'follow_form' if signed_in? %>
-    <% if @user.articles.any? %>
-      <h3>Articles (<%= @user.articles.count %>)</h3>
-      <ol class="microposts">
-        <%= render @articles %>
-      </ol>
-      <%= will_paginate @articles %>
-    <% end %>
+    <ul class="nav nav-tabs">
+    	<li class="active"><a href="#profile" data-toggle="tab">Profile</a></li>
+    	<li><a href="#article" data-toggle="tab">Articles</a></li>
+    </ul>
+    <div class="tab-content">
+    	<div class="tab-pane active" id="profile">
+    		<% if current_user?(user) %>
+    		<%= link_to "Edit Profile", edit_user_path(current_user) %>
+    		<% end %>
+    		<dl class="dl-horizontal">
+    			<dt>Age:</dt>
+    			<dd><%= @user.age %></dd>
+    			<dt>Location:</dt>
+    			<dd><%= @user.location %></dd>
+    			<dt>Website:</dt>
+    			<dd><%= @user.website %></dd>
+    		</dl>
+    		<hr/>
+    		<dl>
+    			<dt>About Me:</dt>
+    			<dd><%= @user.about_me%>
+    				<dl class="dl-horizaontal">
+    					<dt>Interests:</dt>
+    					<dd><%= @user.interests%></dd>
+    					<dt>Motivation:</dt>
+    					<dd><%= @user.motivation%></dd>
+					</dl>
+    			</dd>
+    			
+    		</dl>
+    	</div>
+    	<div class="tab-pane" id="article">
+    		<% if @user.articles.any? %>
+		      <h3>Articles (<%= @user.articles.count %>)</h3>
+		      <ol class="microposts">
+		        <%= render @articles %>
+		      </ol>
+		      <%= will_paginate @articles %>
+		    <% end %>
+    	</div>
+    </div>
   </div>
 </div>
