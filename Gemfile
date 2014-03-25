@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 gem 'gravatar_image_tag'
 gem 'rails' 
-# gem 'bootstrap-sass', '3.1.1'
+gem 'bootstrap-sass', '3.1.1'
 gem 'bcrypt-ruby' 
 gem 'faker'  
 gem 'bootstrap-will_paginate' 
@@ -23,7 +23,6 @@ group :assets do
 end
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   gem 'therubyracer', :platforms => :ruby
-
   
  
 # To use ActiveModel has_secure_password
