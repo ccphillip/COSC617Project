@@ -1,7 +1,11 @@
 source 'https://rubygems.org'
 gem 'gravatar_image_tag'
 gem 'rails' 
+<<<<<<< HEAD
+# gem 'bootstrap-sass' 
+=======
 gem 'bootstrap-sass', '3.1.1'
+>>>>>>> branch 'master' of https://github.com/ccphillip/COSC617Project.git
 gem 'bcrypt-ruby' 
 gem 'faker'  
 gem 'bootstrap-will_paginate' 
