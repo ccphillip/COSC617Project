@@ -1,6 +1,6 @@
 ProjectDemo::Application.routes.draw do
   resources :goals
-
+resources :comments
 
 resources :users do
     member do
@@ -11,7 +11,7 @@ resources :users do
   resources :sessions,      :only => [:new, :create, :destroy]
   resources :articles,    :only => [:create, :destroy]
   resources :relationships, :only => [:create, :destroy]
-  
+  resources :comments,      :only => [:create, :destroy]
   root :to => "static_pages#home"
 
   match '/contact', :to => 'static_pages#contact'
@@ -20,7 +20,7 @@ resources :users do
   match '/signup',  :to => 'users#new'
   match '/signin',  :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'
-
+match '/comment', :to => 'articles#comment'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
