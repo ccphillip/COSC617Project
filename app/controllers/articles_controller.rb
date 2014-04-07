@@ -3,7 +3,7 @@ class ArticlesController < ApplicationController
   before_filter :correct_user,   only: :destroy
 
   def create
-    @article = current_user.microposts.build(params[:article])
+    @article = current_user.articles.build(params[:article])
     if @article.save
       flash[:success] = "Article created!"
       redirect_to root_url
