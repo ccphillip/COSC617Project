@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :name, :email, :password, :password_confirmation, :website, :about_me, :location, :age, :motivation, :interests
+  attr_accessible :name, :email, :password, :password_confirmation
   has_secure_password
   has_many :articles, dependent: :destroy
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
@@ -8,9 +8,10 @@ class User < ActiveRecord::Base
                                    class_name:  "Relationship",
                                    dependent:   :destroy
   has_many :followers, through: :reverse_relationships, source: :follower
-
+  has_one :profile, dependent: :destroy
   before_save { email.downcase! }
   before_save :create_remember_token
+  after_save :create_the_profile
 
   validates :name,  presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -41,5 +42,10 @@ class User < ActiveRecord::Base
     def create_remember_token
       self.remember_token = SecureRandom.urlsafe_base64
     end
-    
+    def create_the_profile
+      self.create_profile(user_id: self.id)
+      #p = Profile.new()
+      #p.user_id = self.id
+      #p.save(:validate=>false)
+    end
 end

@@ -1,0 +1,10 @@
+<h1>Editing profile</h1>
+
+<%= render 'form' %>
+
+<% if current_user.admin %>
+	<%= link_to 'Show', @profile %> |
+	<%= link_to 'Back', profiles_path %>
+<% else %>
+	<%= link_to 'Cancel', current_user %>
+<% end %>

@@ -1,4 +1,10 @@
 ProjectDemo::Application.routes.draw do
+  resources :profiles
+
+
+  resources :privacy_levels
+
+
   resources :goals
 
 

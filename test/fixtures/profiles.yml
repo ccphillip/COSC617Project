@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_id: 1
+  website: 
+  about_me: 
+  location: 
+  interests: 
+  motivation: 
+  age: 1
+  privacy_level_id: 1
+
+two:
+  user_id: 1
+  website: 
+  about_me: 
+  location: 
+  interests: 
+  motivation: 
+  age: 1
+  privacy_level_id: 1

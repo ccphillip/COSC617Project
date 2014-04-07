@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140324035414) do
+ActiveRecord::Schema.define(:version => 20140407021225) do
 
   create_table "articles", :force => true do |t|
     t.string   "content"
@@ -22,6 +22,12 @@ ActiveRecord::Schema.define(:version => 20140324035414) do
 
   add_index "articles", ["user_id", "created_at"], :name => "index_articles_on_user_id_and_created_at"
 
+  create_table "comments", :force => true do |t|
+    t.string  "name"
+    t.string  "body"
+    t.integer "article_id"
+  end
+
   create_table "goals", :force => true do |t|
     t.string   "name"
     t.string   "description"
@@ -30,6 +36,26 @@ ActiveRecord::Schema.define(:version => 20140324035414) do
     t.string   "priority"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "privacy_levels", :force => true do |t|
+    t.integer  "level"
+    t.string   "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "profiles", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "website"
+    t.string   "about_me"
+    t.string   "location"
+    t.string   "interests"
+    t.string   "motivation"
+    t.integer  "age"
+    t.integer  "privacy_level_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
   create_table "relationships", :force => true do |t|
@@ -51,12 +77,6 @@ ActiveRecord::Schema.define(:version => 20140324035414) do
     t.boolean  "admin",           :default => false
     t.string   "remember_token"
     t.string   "password_digest"
-    t.string   "website"
-    t.string   "about_me"
-    t.string   "location"
-    t.string   "interests"
-    t.string   "motivation"
-    t.integer  "age"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

@@ -19,30 +19,32 @@
     </ul>
     <div class="tab-content">
     	<div class="tab-pane active" id="profile">
-    		<% if current_user?(user) %>
-    		<%= link_to "Edit Profile", edit_user_path(current_user) %>
+    		<% if current_user?(@user) %>
+    		<%= link_to "Edit Profile", edit_profile_path(@user.profile.id) %>
     		<% end %>
-    		<dl class="dl-horizontal">
-    			<dt>Age:</dt>
-    			<dd><%= @user.age %></dd>
-    			<dt>Location:</dt>
-    			<dd><%= @user.location %></dd>
-    			<dt>Website:</dt>
-    			<dd><%= @user.website %></dd>
-    		</dl>
-    		<hr/>
-    		<dl>
-    			<dt>About Me:</dt>
-    			<dd><%= @user.about_me%>
-    				<dl class="dl-horizaontal">
-    					<dt>Interests:</dt>
-    					<dd><%= @user.interests%></dd>
-    					<dt>Motivation:</dt>
-    					<dd><%= @user.motivation%></dd>
-					</dl>
-    			</dd>
-    			
-    		</dl>
+    		<% if current_user?(@user) || current_user.admin || @user.profile.privacy_level_id == 1 || (@user.profile.privacy_level_id == 2 && current_user.following?(@user)) || current_user.admin %>
+	    		<dl class="dl-horizontal">
+	    			<dt>Age:</dt>
+	    			<dd><%= @user.profile.age %></dd>
+	    			<dt>Location:</dt>
+	    			<dd><%= @user.profile.location %></dd>
+	    			<dt>Website:</dt>
+	    			<dd><%= @user.profile.website %></dd>
+	    		</dl>
+	    		<hr/>
+	    		<dl>
+	    			<dt>About Me:</dt>
+	    			<dd><%= @user.profile.about_me%>
+	    				<dl class="dl-horizaontal">
+	    					<dt>Interests:</dt>
+	    					<dd><%= @user.profile.interests%></dd>
+	    					<dt>Motivation:</dt>
+	    					<dd><%= @user.profile.motivation%></dd>
+						</dl>
+	    			</dd>
+	    			
+	    		</dl>
+    		<% end %>
     	</div>
     	<div class="tab-pane" id="article">
     		<% if @user.articles.any? %>

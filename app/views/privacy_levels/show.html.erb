@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Level:</b>
+  <%= @privacy_level.level %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @privacy_level.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_privacy_level_path(@privacy_level) %> |
+<%= link_to 'Back', privacy_levels_path %>
