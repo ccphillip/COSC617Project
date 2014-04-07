@@ -1,0 +1,82 @@
+<h1>Available Groups</h1>
+
+<ul class="nav nav-tabs">
+    	<li class="active"><a href="#all" data-toggle="tab">All Groups</a></li>
+    	<li><a href="#yours" data-toggle="tab">Your Groups</a></li>
+    </ul>
+    <div class="tab-content">
+    	<div class="tab-pane active" id="all">		
+			<table class="table table-striped">
+			  <tr>
+			    <th>Name</th>
+			    <th>Description</th>
+			    <th>Motto</th>
+			    <th></th>
+			    <th></th>
+			    <th></th>
+			  </tr>
+			
+			<% @groups.each do |group| %>
+			  <tr>
+			    <td><%= group.name %></td>
+			    <td><%= group.description %></td>
+			    <td><%= group.motto %></td>
+			    <td><%= link_to 'Show', group %></td>
+			    <% if current_user.admin || group_admin(group, current_user)%>
+				    <td><%= link_to 'Edit', edit_group_path(group) %></td>
+				    <td><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+				<% else %>
+				<td>
+					<% if group_member(group, current_user)%>
+					Leave group
+					<% else %>
+					Follow group
+					<% end %>
+					</td><td></td>
+				<% end %>
+			  </tr>
+			<% end %>
+			</table>
+		</div>
+	
+		<div class="tab-pane" id="yours">
+			<table class="table table-striped">
+			  <tr>
+			    <th>Name</th>
+			    <th>Description</th>
+			    <th>Motto</th>
+			    <th></th>
+			    <th></th>
+			    <th></th>
+			  </tr>
+			<% if @user_groups %>
+				<% @user_groups.each do |group| %>
+				<% if group_admin(group, current_user)%>
+				<% else %>
+				NOPE
+				<% end %>
+				  <tr>
+				    <td><%= group.name %></td>
+				    <td><%= group.description %></td>
+				    <td><%= group.motto %></td>
+				    <% if current_user.admin || group_admin(group, current_user)%>
+					    <td><%= link_to 'Edit', edit_group_path(group) %></td>
+					    <td><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+					<% else %>
+					<td>
+						<% if group_member(group, current_user)%>
+						Leave group
+						<% else %>
+						Follow group
+						<% end %>
+						</td><td></td>
+					<% end %>
+				  </tr>
+				<% end %>
+			<% end %>
+			</table>
+		</div>
+	</div>
+<br />
+
+<%= link_to 'New Group', new_group_path %>
