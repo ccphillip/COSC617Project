@@ -7,7 +7,7 @@ ProjectDemo::Application.routes.draw do
 
   resources :privacy_levels
 
-
+  match "goals/preset" => "goals#preset"
   resources :goals
 resources :comments
 
@@ -29,7 +29,7 @@ resources :users do
   match '/signup',  :to => 'users#new'
   match '/signin',  :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'
-match '/comment', :to => 'articles#comment'
+  match '/comment', :to => 'articles#comment'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -80,4 +80,15 @@ class GoalsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  # GET /goals/preset
+  # GET /goals/preset.json
+  def preset
+    @goal = Goal.new
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @goal }
+    end
+  end
 end
