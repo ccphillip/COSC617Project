@@ -8,6 +8,7 @@ ProjectDemo::Application.routes.draw do
   resources :privacy_levels
 
   match "goals/preset" => "goals#preset"
+  match "goals/progress" => "goals#progress"
   resources :goals
 resources :comments
 

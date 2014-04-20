@@ -43,11 +43,12 @@
 		</td>
 		<td class = "list_actions">
 			<%= link_to 'Show', goal %><br/>
-			<%= link_to 'Edit', edit_goal_path(goal) %><br/>
+			<%= link_to 'Edit Goal', edit_goal_path(goal) %><br/>
+			<%= link_to 'Progress', :controller => 'goals', :action => 'progress'%>
 			<%= link_to 'Destroy', goal, method: :delete, data: { confirm: 'Are you sure?' } %>
 		</td>
 	</tr>
 	<%end%>
 </table>
 <%= link_to 'New Goal', new_goal_path %><br/>
-<%= link_to ' New Preset Goal', :controller => 'goals', :action => 'preset'%>
+<%= link_to 'New Preset Goal', :controller => 'goals', :action => 'preset'%>
